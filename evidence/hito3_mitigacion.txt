@@ -1,0 +1,15 @@
+=== HITO 3: MITIGACIÓN TEMPORAL ===
+Fecha: Thu May 21 22:37:36 UTC 2026
+Hostname: copy-fail-keylaim100
+algif_aead en lsmod:
+(módulo NO cargado - mitigación activa)
+
+Intento de exploit post-mitigación:
+python3: can't open file '/home/student/copy_fail_exp.py': [Errno 2] No such file or directory
+
+
+
+
+Deshabilitar algif_aead no le va a romper nada muy grave mayoría de los usuarios.
+Dejan de funcionar los programas raros o muy específicos que le piden directamente al Kernel que cifre cosas usando sockets criptográficos (AF_ALG), como configuraciones avanzadas de hardware en routers o si alguien activó a mano ese motor en OpenSSL.
+Lo que sigue funcionando es el cifrado de los discos duros (LUKS), las conexiones seguras por SSH, y los navegadores web siguen andando al 100% porque usan sus propias librerías internas para cifrar, sin molestar al Kernel.
